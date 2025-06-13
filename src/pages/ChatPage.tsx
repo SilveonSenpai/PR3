@@ -44,18 +44,17 @@ export default function ChatPage({ socket, userId, chatType, selectedId, selecte
       });
       setUsernames(prev => ({ ...prev, ...newMap }));
     });
-  }, [messages, liveMessages]);
+  }, [messages, liveMessages]); //не пащекуй
 
   useEffect(() => {
-    setLiveMessages([]); // очищаємо live-повідомлення при зміні чату
+    setLiveMessages([]); 
 
-    // Приєднуємося до відповідних кімнат
     if (chatType === 'room' && selectedId) {
       socket.emit('joinRoom', { roomId: selectedId, userId });
     } else if (chatType === 'channel' && selectedId) {
       socket.emit('joinChannel', { channelId: selectedId, userId });
     } else if (chatType === 'global') {
-      // Глобальний чат вже підключений за замовчуванням
+      // Глобальний чат вже підключений по дефлоту
     }
 
     const handleReceiveMessage = (msg: Message) => {
@@ -88,7 +87,6 @@ export default function ChatPage({ socket, userId, chatType, selectedId, selecte
   const handleSend = async () => {
     if (!text.trim() && !file) return;
 
-    // ✔️ ВИПРАВЛЕНО: Додано перевірку, що для неглобальних чатів є ID
     if (chatType !== 'global' && !selectedId) {
       console.error(`Неможливо надіслати повідомлення: ID для чату типу "${chatType}" не встановлено.`);
       alert(`Помилка: чат не вибрано.`); // Повідомлення для користувача

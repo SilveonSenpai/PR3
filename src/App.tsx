@@ -22,7 +22,7 @@ function MainApp() {
       localStorage.removeItem('userId');
       navigate('/login');
     }
-  }, [userId]);
+  }, [userId]); //ігнорь цю холєру вона не ламає ніц
 
   const handleSelect = (type: ChatType, id?: string, label?: string) => {
     setChatType(type);
@@ -58,7 +58,6 @@ export default function App() {
             <LoginPage
               setUserId={(id: string) => {
                 localStorage.setItem('userId', id);
-                // ❗ Трюк — перейти на /chat через Navigate працює не завжди без цього
                 window.location.href = '/';
               }}
             />

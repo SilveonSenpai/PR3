@@ -19,15 +19,12 @@ export function useChatHistory(chatType: ChatType, selectedId: string | undefine
   const [messages, setMessages] = useState<Message[]>([]);
 
   const loadMessages = async () => {
-    // Додано перевірку, щоб не робити зайвих запитів
     if (!userId || (chatType !== 'global' && !selectedId)) {
       setMessages([]);
       return;
     }
 
-    let url = '/api/messages'; // URL за замовчуванням для глобального чату
-
-    // ✔️ ВИПРАВЛЕНО: Додано параметр `?userId=${userId}` до URL для кімнат та каналів
+    let url = '/api/messages'; 
     if (chatType === 'room' && selectedId) {
       url = `/api/rooms/${selectedId}/messages?userId=${userId}`;
     } else if (chatType === 'channel' && selectedId) {
@@ -39,7 +36,6 @@ export function useChatHistory(chatType: ChatType, selectedId: string | undefine
     try {
       const res = await fetch(url);
       
-      // ✔️ ДОДАНО: Перевірка на успішність HTTP-відповіді
       if (!res.ok) {
         throw new Error(`Помилка сервера: ${res.statusText} (${res.status})`);
       }
@@ -48,12 +44,11 @@ export function useChatHistory(chatType: ChatType, selectedId: string | undefine
       setMessages(Array.isArray(data) ? data : data.messages || []);
     } catch (error) {
       console.error('Помилка завантаження історії чату:', error);
-      setMessages([]); // Очищуємо повідомлення у разі помилки
+      setMessages([]); 
     }
   };
 
   useEffect(() => {
-    // Перезавантажуємо повідомлення при зміні чату
     loadMessages();
   }, [chatType, selectedId, userId]);
 

@@ -1,0 +1,172 @@
+/* Глобальні стилі */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #111827; /* dark gray-blue */
+  color: #f9fafb; /* світлий текст */
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151; /* dark gray */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Заголовки */
+h1, h2, h3, h4 {
+  color: #ffffff;
+}
+
+/* Кнопки */
+button {
+  background-color: #2563eb; /* blue */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #1e40af;
+}
+
+button:disabled {
+  background-color: #4b5563;
+  cursor: not-allowed;
+}
+
+/* Секції/Контейнери */
+.sidebar {
+  background-color: #1f2937;
+  border-right: 1px solid #374151;
+  padding: 16px;
+  width: 260px;
+  overflow-y: auto;
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0f172a;
+}
+
+.chat-header {
+  padding: 16px;
+  background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #0f172a;
+}
+
+.chat-footer {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  background-color: #1e293b;
+  border-top: 1px solid #334155;
+}
+
+/* Інпути */
+input[type="text"],
+input[type="password"],
+input[type="file"],
+textarea {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Повідомлення */
+.message {
+  background-color: #1e293b;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.message:hover {
+  background-color: #334155;
+}
+
+.message .username {
+  font-weight: bold;
+  color: #93c5fd;
+}
+
+.message .timestamp {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Модальне вікно */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #1f2937;
+  color: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Системні повідомлення */
+.alert {
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.alert.error {
+  background-color: #7f1d1d;
+  color: #fee2e2;
+}
+
+.alert.success {
+  background-color: #14532d;
+  color: #bbf7d0;
+}
+

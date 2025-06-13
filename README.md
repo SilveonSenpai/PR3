@@ -38,10 +38,6 @@
 
 ### 🔧 Встановлення залежностей:
 ```bash
-cd server
-npm install
-
-cd ../client
 npm install
 
 ```
@@ -49,12 +45,6 @@ npm install
 ### 🚀 Запуск у режимі розробки:
 
 ```bash
-# Сервер
-cd server
-npm run dev
-
-# Клієнт
-cd ../client
 npm run dev
 
 ```
